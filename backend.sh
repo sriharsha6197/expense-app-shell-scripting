@@ -3,7 +3,7 @@ dnf module enable nodejs:18 -y
 
 dnf install nodejs -y
 
-cp backend.service /etc/systemd/systemd/backend.service
+cp backend.service /etc/systemd/system/backend.service
 
 useradd Sri
 
