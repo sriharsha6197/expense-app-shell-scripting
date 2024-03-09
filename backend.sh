@@ -3,6 +3,8 @@ dnf module enable nodejs:18 -y
 
 dnf install nodejs -y
 
+cp backend.service /etc/systemd/systemd/backend.service
+
 useradd Sri
 
 mkdir /app
@@ -10,9 +12,8 @@ mkdir /app
 curl -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/backend.zip
 unzip -d /app /tmp/backend.zip
 
-npm install /app
-
-cp backend.service /etc/systemd/systemd/backend.service
+cd /app
+npm install
 
 systemctl daemon-reload
 
