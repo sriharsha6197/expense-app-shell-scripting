@@ -22,4 +22,4 @@ systemctl enable backend
 systemctl start backend
 
 dnf install mysql -y
-mysql -h 172.31.85.229 -uroot -pSriharsha@1 < /app/schema/backend.sql
+mysql -h mysql.sriharsha.shop -uroot -pSriharsha@1 < /app/schema/backend.sql
