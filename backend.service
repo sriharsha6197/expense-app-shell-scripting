@@ -3,7 +3,7 @@ Description=Backed]nd Service
 
 [Service]
 User=Sri
-Environment=DB_Host="172.31.80.105"
+Environment=DB_Host="mysql.sriharsha.shop"
 ExecStart=/bin/node /app/index.js
 SyslogIdentifier=backend 
 
