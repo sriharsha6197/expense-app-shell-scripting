@@ -1,25 +1,40 @@
-dnf module disable nodejs -y
-dnf module enable nodejs:18 -y
+source common.sh
+component=backend
 
-dnf install nodejs -y
+echo disabling nodejs module
+dnf module disable nodejs -y   >> $expense.log
 
-cp backend.service /etc/systemd/system/backend.service
+echo enabling nodejs module
+dnf module enable nodejs:18 -y >> $expense.log
 
-useradd Sri
+echo Installing nodejs
+dnf install nodejs -y          >> $expense.log
 
-rm -rf /app
-mkdir /app
+echo creating backend service file
+cp $component.service /etc/systemd/system/$component.service   >> $expense.log
+ 
+echo creating user
+useradd Sri  >> $expense.log
 
-curl -o /tmp/backend.zip https://expense-artifacts.s3.amazonaws.com/backend.zip
-unzip -d /app /tmp/backend.zip
+echo removing app directory
+rm -rf /app  >> $expense.log
 
-cd /app
-npm install
+echo creating app directory
+mkdir /app   >> $expense.log
 
-systemctl daemon-reload
+download_extract
 
-systemctl enable backend
-systemctl start backend
+echo go to app directory and install dependencies
+cd /app  >> $expense.log
+npm install  >> $expense.log
 
-dnf install mysql -y
-mysql -h mysql.sriharsha.shop -uroot -pSriharsha@1 < /app/schema/backend.sql
+echo enabling and restarting backend
+systemctl daemon-reload  >> $expense.log
+systemctl enable backend  >> $expense.log
+systemctl start backend   >> $expense.log
+
+echo install mysql client
+dnf install mysql -y      >> $expense.log
+
+echo load schema
+mysql -h frontend.sriharsha.shop -uroot -pSriharsha@1 < /app/schema/backend.sql   >> $expense.log
