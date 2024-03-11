@@ -20,6 +20,13 @@ status_check
 echo creating user
 useradd Sri  >> $expense.log
 status_check
+if [ $? -ne 0 ];
+then
+useradd Sri
+else
+echo User already exists
+fi
+
 
 echo removing app directory
 rm -rf /app  >> $expense.log
