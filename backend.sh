@@ -52,6 +52,6 @@ dnf install mysql -y      &>> $expense.log
 status_check
 
 echo load schema
-mysql_password = $1
+mysql_password=$1
 mysql -h mysql.sriharsha.shop -uroot -p$mysql_password < /app/schema/backend.sql   &>> $expense.log
 status_check
