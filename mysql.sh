@@ -1,3 +1,5 @@
+source common.sh
+
 echo disabling module mysql
 dnf module disable mysql -y  &>> $expense_log
 status_check
