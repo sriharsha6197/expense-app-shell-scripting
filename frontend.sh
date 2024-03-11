@@ -3,7 +3,7 @@ component=frontend
 
 echo Installing nginx
 dnf install nginx -y >> $expense_log
-if[$?-eq0];
+if[$?-eq0]
 then
 echo -e "\e[32mSUCCESS\e[0m"
 else
