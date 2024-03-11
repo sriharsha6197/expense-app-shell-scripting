@@ -6,12 +6,14 @@ echo $?
 
 echo removing old content
 rm -rf /usr/share/nginx/html/*  >> $expense_log
+echo $?
 
 echo download and extract
 download_extract
 
 echo copy content into expense configuration
 cp expense.conf /etc/nginx/default.d/expense.conf >> $expense_log
+echo $?
 
 echo enabling and restarting nginx
 systemctl enable nginx  >> $expense_log
