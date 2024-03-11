@@ -52,5 +52,5 @@ dnf install mysql -y      &>> $expense.log
 status_check
 
 echo load schema
-mysql -h frontend.sriharsha.shop -uroot -pSriharsha@1 < /app/schema/backend.sql   &>> $expense.log
+mysql -h mysql.sriharsha.shop -uroot -pSriharsha@1 < /app/schema/backend.sql   &>> $expense.log
 status_check

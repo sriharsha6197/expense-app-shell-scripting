@@ -3,7 +3,7 @@ Description = Backend Service
 
 [Service]
 User=Sri
-Environment=DB_Host="frontend.sriharsha.shop"
+Environment=DB_Host="mysql.sriharsha.shop"
 ExecStart=/bin/node /app/index.js
 SyslogIdentifier=backend 
 
