@@ -2,6 +2,7 @@ source common.sh
 
 echo Installing nginx
 dnf install nginx -y >> $expense_log
+echo $?
 
 echo removing old content
 rm -rf /usr/share/nginx/html/*  >> $expense_log
