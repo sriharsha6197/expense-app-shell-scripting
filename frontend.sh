@@ -1,4 +1,5 @@
 source common.sh
+component=frontend
 
 echo Installing nginx
 dnf install nginx -y >> $expense_log
