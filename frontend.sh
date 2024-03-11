@@ -6,8 +6,6 @@ dnf install nginx -y >> $expense_log
 echo removing old content
 rm -rf /usr/share/nginx/html/*  >> $expense_log
 
-cd /usr/share/nginx/html
-
 echo download and extract
 download_extract
 
