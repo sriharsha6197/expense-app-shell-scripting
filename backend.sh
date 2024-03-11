@@ -19,27 +19,25 @@ status_check
  
 echo creating user
 useradd Sri  >> $expense.log
-status_check
+id Sri
 if [ $? -ne 0 ];
 then
-useradd Sri
-else
-echo User already exists
+useradd Sri >> $expense.log
 fi
-
+status_check
 
 echo removing app directory
 rm -rf /app  >> $expense.log
 status_check
 
-echo creating app directory
+echo creating and go to the app directory
 mkdir /app   >> $expense.log
+cd /app  >> $expense.log
 status_check
 
 download_extract
 
-echo go to app directory and install dependencies
-cd /app  >> $expense.log
+echo install dependencies
 npm install  >> $expense.log
 status_check
 
